@@ -405,10 +405,10 @@
 
 		function autoDockChanged(select) {
 			if (select.value === "3") {
-				ons.notification.prompt(i18next.t('settings.persistentData.autoDockDelayPrompt',{defaultValue: "Please enter delay in minutes ({{range}}) after which idle robot should return to dock:", range: '5-60'}),{title: i18next.t('common.prompt',"Prompt"), cancelable: true, buttonLabels: [i18next.t('common.cancel',"Cancel"), i18next.t('common.ok',"OK")]})
+				ons.notification.prompt(i18next.t('settings.persistentData.autoDockDelayPrompt',{defaultValue: "Please enter delay in minutes ({{range}}) after which idle robot should return to dock:", range: '5-43200'}),{title: i18next.t('common.prompt',"Prompt"), cancelable: true, buttonLabels: [i18next.t('common.cancel',"Cancel"), i18next.t('common.ok',"OK")]})
 				.then(res => {
 					res = parseInt(res);
-					if (!res || !(res >= 5 && res <= 60)) {
+					if (!res || !(res >= 5 && res <= 43200)) {
 						if (res !== undefined) ons.notification.alert(i18next.t('settings.persistentData.autoDockDelayErr',"The specified value does not fall within the allowed range."),{title: i18next.t('common.attention',"Attention!")});
 						select.value = oldADR;
 						return;
